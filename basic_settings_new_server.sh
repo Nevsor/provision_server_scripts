@@ -35,11 +35,11 @@ grep AllowGroups /etc/ssh/sshd_config || echo 'AllowGroups ssh_users' >> /etc/ss
 
 
 su $USERNAME -c "mkdir ~/.config ~/.ssh ~/.zsh"
-su $USERNAME -c "echo $SSH_PUBKEY > ~/.ssh/authorized_keys"
-su $USERNAME -c "echo 'export EDITOR=nvim' >> ~/.config/environment"
-su $USERNAME -c "echo 'export VISUAL=nvim' >> ~/.config/environment"
-su $USERNAME -c "echo 'source ~/.config/environment' >> ~/.zshrc"
-su $USERNAME -c "echo 'source ~/.zsh/spaceship/spaceship.zsh' >> ~/.zshrc"
+su $USERNAME -c "grep $SSH_PUBKEY ~/.ssh/authorized_keys || echo $SSH_PUBKEY > ~/.ssh/authorized_keys"
+su $USERNAME -c "grep 'export EDITOR=nvim' ~/.config/environment || echo 'export EDITOR=nvim' >> ~/.config/environment"
+su $USERNAME -c "grep 'export VISUAL=nvim' ~/.config/environment || echo 'export VISUAL=nvim' >> ~/.config/environment"
+su $USERNAME -c "grep 'source ~/.config/environment' ~/.zshrc || echo 'source ~/.config/environment' >> ~/.zshrc"
+su $USERNAME -c "grep 'source ~/.zsh/spaceship/spaceship.zsh' ~/.zshrc || echo 'source ~/.zsh/spaceship/spaceship.zsh' >> ~/.zshrc"
 su $USERNAME -c "git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship"
 
 printf "\nYou can now login via SSH as $USERNAME.\n"
