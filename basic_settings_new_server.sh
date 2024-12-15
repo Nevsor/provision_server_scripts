@@ -7,6 +7,12 @@ set -o xtrace
 
 if [ ! -f "/etc/debian_version" ]; then
    echo 'This script was written for debian servers. It may not work on other distributions.'
+   exit
+fi
+
+if [ "$EUID" -ne 0 ]
+  then echo "This script needs to be run as root."
+  exit
 fi
 
 apt update
