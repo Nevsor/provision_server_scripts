@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SSH_PUBKEY='ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPpuuycNjXmHysGn58gMQuUKP5MoWwr2FjUwXgyX5oP sven@stegemann.de'
 USERNAME='sven'
