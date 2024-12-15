@@ -40,4 +40,4 @@ su $USERNAME -c "echo 'export EDITOR=nvim' >> ~/.config/environment"
 su $USERNAME -c "echo 'export VISUAL=nvim' >> ~/.config/environment"
 su $USERNAME -c "echo 'source ~/.config/environment' >> ~/.zshrc"
 
-printf "\nYou can now login per SSH as $USERNAME.\n"
+printf "\nYou can now login via SSH as $USERNAME.\n"
