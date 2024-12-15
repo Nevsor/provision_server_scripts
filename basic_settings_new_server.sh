@@ -11,7 +11,7 @@ fi
 
 apt update
 apt upgrade --assume-yes
-apt install --assume-yes zsh sudo neovim
+apt install --assume-yes zsh sudo neovim git
 groupadd ssh_users
 useradd $USERNAME --create-home --shell /bin/zsh --groups sudo,ssh_users || usermod -aG sudo,ssh_users $USERNAME --shell /bin/zsh
 
@@ -34,10 +34,12 @@ mv /etc/ssh/sshd_config.new /etc/ssh/sshd_config
 grep AllowGroups /etc/ssh/sshd_config || echo 'AllowGroups ssh_users' >> /etc/ssh/sshd_config
 
 
-su $USERNAME -c "mkdir ~/.config ~/.ssh"
+su $USERNAME -c "mkdir ~/.config ~/.ssh ~/.zsh"
 su $USERNAME -c "echo $SSH_PUBKEY > ~/.ssh/authorized_keys"
 su $USERNAME -c "echo 'export EDITOR=nvim' >> ~/.config/environment"
 su $USERNAME -c "echo 'export VISUAL=nvim' >> ~/.config/environment"
 su $USERNAME -c "echo 'source ~/.config/environment' >> ~/.zshrc"
+su $USERNAME -c "echo 'source ~/.zsh/spaceship/spaceship.zsh' >> ~/.zshrc"
+su $USERNAME -c "git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship"
 
 printf "\nYou can now login via SSH as $USERNAME.\n"
