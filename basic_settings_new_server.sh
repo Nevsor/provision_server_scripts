@@ -85,7 +85,7 @@ chsh -s /bin/zsh
 set +x
 echo '+ curl -sS https://starship.rs/install.sh | sh'
 curl -sS https://starship.rs/install.sh | sh
-echo +user_and_root: "echo 'eval \"\$(starship init zsh)\"' >> ~/.zshrc"
+echo + as_user_and_root \""echo 'eval \"\$(starship init zsh)\"' >> ~/.zshrc"\"
 as_user_and_root "echo 'eval \"\$(starship init zsh)\"' >> ~/.zshrc"
 set -x
 as_user_and_root 'touch ~/.config/starship.toml && grep add_newline ~/.config/starship.toml || sed -i "1i add_newline = false" ~/.config/starship.toml'
