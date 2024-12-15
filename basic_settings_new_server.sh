@@ -48,6 +48,12 @@ su $USERNAME -c "grep 'source ~/.config/environment' ~/.zshrc || echo 'source ~/
 su $USERNAME -c "grep 'source ~/.zsh/spaceship/spaceship.zsh' ~/.zshrc || echo 'source ~/.zsh/spaceship/spaceship.zsh' >> ~/.zshrc"
 su $USERNAME -c "git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship || (cd ~/.zsh/spaceship && git pull --rebase)"
 
+chsh -s /bin/zsh
+
+# TODO: Use one installation for everyone?
+grep 'source ~/.zsh/spaceship/spaceship.zsh' ~/.zshrc || echo 'source ~/.zsh/spaceship/spaceship.zsh' >> ~/.zshrc
+git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship || (cd ~/.zsh/spaceship && git pull --rebase)
+
 systemctl restart sshd
 
 printf "\nYou can now login via SSH as $USERNAME.\n"
